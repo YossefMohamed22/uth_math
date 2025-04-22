@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:crypto/crypto.dart';
+import 'package:neuro_math/view/multi_operation_page/widgets/vertical_ticker.dart';
 import 'dart:convert';
-import '../home_page.dart';
-import 'admins_screen.dart';
+import 'home/home_page.dart';
+import 'admin_page/admins_screen.dart';
 import 'exam_screen.dart';
 
 class Login extends StatelessWidget {
@@ -90,6 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
         bool hasExam = true; // يمكنك تغيير القيمة لمحاكاة الحالة
         if (hasExam) {
           Navigator.pushReplacementNamed(context, '/exam');
+          // Navigator.push(context,MaterialPageRoute(builder: (context) => VerticalTicker(texts: ["1","2","4","5","6","-4","-8","-9","10"]),) );
         } else {
           // ignore: use_build_context_synchronously
           Navigator.pushReplacementNamed(context, '/main');

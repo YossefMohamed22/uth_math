@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neuro_math/bloc/universal_bloc.dart';
+import 'package:neuro_math/bloc/universal_state.dart';
+import 'package:neuro_math/view/sprint_page/sprint_page_logic.dart';
+
 class Sprint extends StatefulWidget {
   const Sprint({super.key});
 
@@ -22,11 +27,14 @@ class _Page1State extends State<Sprint> {
   int correctAnswers = 0;
   int wrongAnswers = 0;
 
+  SprintPageLogic logic = SprintPageLogic();
+
   @override
   void initState() {
     super.initState();
     generateQuestion();
     startTimer();
+    logic.cubit.setSuccess("data from sucess");
   }
 
   void startTimer() {
@@ -228,6 +236,9 @@ class _Page1State extends State<Sprint> {
       }
     }
     question += " = $answer";
+
+
+
 
     return Scaffold(
       backgroundColor: Colors.white,

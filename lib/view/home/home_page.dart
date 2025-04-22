@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:neuro_math/view/home/home_logic.dart';
+import 'package:neuro_math/view/multi_operation_page/multi_operations_page.dart';
 
-import 'view/divided.dart';
-import 'view/marathon.dart';
-import 'view/multiplied.dart';
-import 'view/sprint.dart';
+import '../divided.dart';
+import '../marathon.dart';
+import '../multiplied.dart';
+import '../sprint_page/sprint.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,6 +30,12 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+
+
+  final HomeLogic logic = HomeLogic();
+
+
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -49,7 +57,8 @@ class _HomePageState extends State<HomePage> {
       },
       {
         'image': 'assets/math.png',
-        'page': const Sprint(),
+        // 'page': const Sprint(),
+        'page': const MultiOperationsPage(),
       },
     ];
 
@@ -57,6 +66,22 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.blue[100],
       body: Column(
         children: [
+          SizedBox(height: kToolbarHeight-10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onTap: (){
+                  logic.showStudentDataBottomSheet(context);
+                },
+                child: Image.asset(
+                  "assets/user_icon.png",
+                  width: 25, height: 25,
+                ),
+              ),
+              SizedBox(width: 16,),
+            ],
+          ),
           Expanded(
             flex: 2,
             child: Column(
@@ -98,6 +123,8 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             flex: 3,
             child: GridView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
               padding: EdgeInsets.symmetric(
                 horizontal: screenWidth * 0.02,
                 vertical: screenHeight * 0.02,

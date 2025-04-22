@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'package:neuro_math/view/admin_page/widgets/students_number_widget.dart';
+import '../login.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
@@ -30,18 +31,92 @@ class _AdminScreenState extends State<AdminScreen> {
       "name": "student1",
       "correctAnswers": 5,
       "wrongAnswers": 2,
+      "level": 15,
       "lastLogin": "2025-02-25 10:30"
     },
     {
       "name": "student2",
       "correctAnswers": 3,
       "wrongAnswers": 4,
+      "level": 10,
       "lastLogin": "2025-02-26 12:45"
     },
     {
       "name": "student3",
       "correctAnswers": 6,
       "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },    {
+      "name": "student4",
+      "correctAnswers": 8,
+      "wrongAnswers": 0,
+      "level": 10,
+      "lastLogin": "2025-02-27 08:20"
+    },    {
+      "name": "student5",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },    {
+      "name": "student6",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },    {
+      "name": "student7",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },    {
+      "name": "student8",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },    {
+      "name": "student9",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },
+    {
+      "name": "student10",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },
+    {
+      "name": "student11",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },
+    {
+      "name": "student12",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },
+    {
+      "name": "student13",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
+      "lastLogin": "2025-02-27 08:20"
+    },
+    {
+      "name": "student14",
+      "correctAnswers": 6,
+      "wrongAnswers": 1,
+      "level": 8,
       "lastLogin": "2025-02-27 08:20"
     },
   ];
@@ -126,8 +201,10 @@ class _AdminScreenState extends State<AdminScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text("لوحة تحكم الأدمن"),
+          backgroundColor: Colors.white,
           actions: [
             IconButton(
                 icon: const Icon(Icons.logout),
@@ -136,7 +213,7 @@ class _AdminScreenState extends State<AdminScreen> {
           ],
           bottom: const TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.account_circle), text: "إنشاء حسابات"),
+              // Tab(icon: Icon(Icons.account_circle), text: "إنشاء حسابات"),
               Tab(icon: Icon(Icons.quiz), text: "إعداد امتحان"),
               Tab(icon: Icon(Icons.person), text: "بيانات الطلاب"),
             ],
@@ -145,43 +222,44 @@ class _AdminScreenState extends State<AdminScreen> {
         body: TabBarView(
           children: [
             // تبويب إنشاء حسابات
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("إنشاء حساب طالب",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 10),
-                    TextField(
-                        controller: usernameController,
-                        decoration: const InputDecoration(
-                            labelText: "اسم المستخدم",
-                            border: OutlineInputBorder())),
-                    const SizedBox(height: 10),
-                    TextField(
-                        controller: passwordController,
-                        decoration: const InputDecoration(
-                            labelText: "كلمة المرور",
-                            border: OutlineInputBorder()),
-                        obscureText: true),
-                    const SizedBox(height: 16),
-                    Center(
-                      child: ElevatedButton.icon(
-                        onPressed: createStudentAccount,
-                        icon: const Icon(Icons.add, color: Colors.black),
-                        label: const Text("إنشاء حساب",
-                            style: TextStyle(color: Colors.black)),
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // SingleChildScrollView(
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(16.0),
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         const Text("إنشاء حساب طالب",
+            //             style: TextStyle(
+            //                 fontSize: 20, fontWeight: FontWeight.bold)),
+            //         const SizedBox(height: 10),
+            //         TextField(
+            //             controller: usernameController,
+            //             decoration: const InputDecoration(
+            //                 labelText: "اسم المستخدم",
+            //                 border: OutlineInputBorder())
+            //         ),
+            //         const SizedBox(height: 10),
+            //         TextField(
+            //             controller: passwordController,
+            //             decoration: const InputDecoration(
+            //                 labelText: "كلمة المرور",
+            //                 border: OutlineInputBorder()),
+            //             obscureText: true),
+            //         const SizedBox(height: 16),
+            //         Center(
+            //           child: ElevatedButton.icon(
+            //             onPressed: createStudentAccount,
+            //             icon: const Icon(Icons.add, color: Colors.black),
+            //             label: const Text("إنشاء حساب",
+            //                 style: TextStyle(color: Colors.black)),
+            //             style: ElevatedButton.styleFrom(
+            //                 backgroundColor: Colors.blue),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             // تبويب إعداد الامتحان
             SingleChildScrollView(
               child: Padding(
@@ -263,26 +341,73 @@ class _AdminScreenState extends State<AdminScreen> {
               ),
             ),
             // تبويب بيانات الطلاب
-            ListView.builder(
-              itemCount: studentData.length,
-              itemBuilder: (context, index) {
-                final student = studentData[index];
-                return Card(
-                  child: ListTile(
-                    title: Text(student['name']),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                            "عدد الإجابات الصحيحة: ${student['correctAnswers']}"),
-                        Text(
-                            "عدد الإجابات الخاطئة: ${student['wrongAnswers']}"),
-                        Text("آخر تسجيل دخول: ${student['lastLogin']}"),
-                      ],
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                StudentsNumberWidget(studentsNumber: studentData.length,),
+                Expanded(
+                  child: ListView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    itemCount: studentData.length,
+                    itemBuilder: (context, index) {
+                      final student = studentData[index];
+                      return Container(
+                        padding: EdgeInsetsDirectional.only(start: 18,top: 16,bottom: 16),
+                        margin: EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFF000000).withOpacity(0.25),
+                              offset: Offset(0, 4),
+                              blurRadius: 4
+                            )
+                          ],
+                          border: Border.all(
+                            color: Color(0xFF9EA2A6),
+                          )
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 5,
+                          children: [
+                            Text("${student['name']}",
+                              style: TextStyle(
+                                fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                              )),
+                            Text( " المستوى :${student['level']}",
+                            textAlign: TextAlign.start,
+                            ),
+                            Text(
+                                "عدد الإجابات الصحيحة: ${student['correctAnswers']}"),
+                            Text(
+                                "عدد الإجابات الخاطئة: ${student['wrongAnswers']}"),
+                            Text("آخر تسجيل دخول: ${student['lastLogin']}"),
+                          ],
+                        ),
+
+                      );
+                      return Card(
+                        child: ListTile(
+                          title: Text(student['name']),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  "عدد الإجابات الصحيحة: ${student['correctAnswers']}"),
+                              Text(
+                                  "عدد الإجابات الخاطئة: ${student['wrongAnswers']}"),
+                              Text("آخر تسجيل دخول: ${student['lastLogin']}"),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ],
             ),
           ],
         ),
