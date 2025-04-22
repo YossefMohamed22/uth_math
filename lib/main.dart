@@ -33,7 +33,7 @@ class Math extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         // home: VerticalTicker(),
-        home: HomePage(),
+        home: Login(),
         // home: AdminScreen(),
       ),
     );
