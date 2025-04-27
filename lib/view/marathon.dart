@@ -171,96 +171,115 @@ class _Page1State extends State<Marathon> {
             ),
           if (!showTimer)
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.all(screenWidth * 0.12),
+                  padding: EdgeInsets.only(top: kToolbarHeight+50),
                   alignment: Alignment.center,
-                  child: Text(
-                    "$num1 $operation $num2 = $answer",
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.1,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: screenHeight * 0.6,
                   child: Column(
+                    spacing: 5,
                     children: [
-                      Expanded(
-                        child: GridView.count(
-                          padding: EdgeInsets.zero,
-                          crossAxisCount: 3,
-                          childAspectRatio: 1.2,
-                          mainAxisSpacing: 2,
-                          crossAxisSpacing: 2,
-                          children: List.generate(9, (index) {
-                            return buildNumberButton("${index + 1}");
-                          }),
+                      Text(
+                        "$num1",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.1,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: deleteLastDigit,
-                              child: Container(
-                                height: screenHeight * 0.11,
-                                color: Colors.red,
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.backspace,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  answer += "0";
-                                });
-                              },
-                              child: Container(
-                                height: screenHeight * 0.11,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.black, width: 0.5),
-                                ),
-                                child: Text(
-                                  "0",
-                                  style: TextStyle(
-                                    fontSize: screenWidth * 0.08,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: checkAnswer,
-                              child: Container(
-                                height: screenHeight * 0.11,
-                                color: Colors.green,
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.check,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      Text(
+                        "$operation $num2",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.1,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: Divider( thickness: 2,color: Colors.black,),
+                      ),
+                      Text(
+                        answer,
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.1,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
                     ],
                   ),
+                ),
+                Expanded(
+                  child: GridView.count(
+                    padding: EdgeInsets.zero,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    crossAxisCount: 3,
+                    childAspectRatio: 1.2,
+                    mainAxisSpacing: 2,
+                    crossAxisSpacing: 2,
+                    children: List.generate(9, (index) {
+                      return buildNumberButton("${index + 1}");
+                    }),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: deleteLastDigit,
+                        child: Container(
+                          height: screenHeight * 0.11,
+                          color: Colors.red,
+                          child: const Center(
+                            child: Icon(
+                              Icons.backspace,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            answer += "0";
+                          });
+                        },
+                        child: Container(
+                          height: screenHeight * 0.11,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.black, width: 0.5),
+                          ),
+                          child: Text(
+                            "0",
+                            style: TextStyle(
+                              fontSize: screenWidth * 0.08,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: checkAnswer,
+                        child: Container(
+                          height: screenHeight * 0.11,
+                          color: Colors.green,
+                          child: const Center(
+                            child: Icon(
+                              Icons.check,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -1,8 +1,9 @@
-import 'package:neuro_math/bloc/universal_bloc.dart';
+import 'package:neuro_math/core/bloc/universal_bloc.dart';
 
 class SprintPageLogic {
 
-  UniversalStateCubit<String> cubit = UniversalStateCubit();
+  final UniversalCubit<String> cubit = UniversalCubit();
+
 
 
 }

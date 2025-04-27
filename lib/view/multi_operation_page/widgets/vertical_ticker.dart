@@ -7,7 +7,7 @@ class VerticalTicker extends StatefulWidget {
 
   const VerticalTicker({
     super.key,
-    this.duration = const Duration(seconds: 8),
+    this.duration = const Duration(seconds: 10),
     required this.logic,
   });
 
@@ -66,12 +66,12 @@ class _VerticalTickerState extends State<VerticalTicker> with SingleTickerProvid
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ...List.generate(widget.logic.numbers.length, (index) {
+              ...List.generate(widget.logic.userSelectNumbers.length, (index) {
                 return SizedBox(
                   height: itemHeight,
                   child: Center(
                     child: Text(
-                      widget.logic.numbers[index],
+                      widget.logic.userSelectNumbers[index].toString(),
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 35,

@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neuro_math/bloc/universal_bloc.dart';
-import 'package:neuro_math/bloc/universal_state.dart';
 import 'package:neuro_math/view/sprint_page/sprint_page_logic.dart';
 
 class Sprint extends StatefulWidget {

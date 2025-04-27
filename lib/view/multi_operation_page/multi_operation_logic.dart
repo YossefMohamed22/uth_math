@@ -1,29 +1,44 @@
 import 'package:flutter/animation.dart';
-import 'package:neuro_math/bloc/universal_bloc.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:neuro_math/core/bloc/universal_bloc.dart';
+import 'dart:math';
 
 class MultiOperationLogic {
 
-  final List<String> numbers = List.generate(10, (index) => index.toString());
+  MultiOperationLogic(){
+    shuffleNumbers();
+    durationFastCubit.setSuccess(1);
+  }
 
-  final UniversalStateCubit<String> resultCubit = UniversalStateCubit();
 
-  final List<int> userSelectNumbers = [1,2,3,4,5,6,7,8,9];
+   List<String> numbers = List.generate(100, (index) => index.toString());
+   List<int> userSelectNumbers = [];
+
+  final UniversalCubit<String> resultCubit = UniversalCubit();
+  final UniversalCubit<int> durationFastCubit = UniversalCubit<int>();
+
+  final ScrollController scrollController = ScrollController();
+
+
 
   late final AnimationController animationController;
 
 
+  void inCreaseSpeed(){
+    var previousDuration = durationFastCubit.data!;
+    if(previousDuration < 3){
+      durationFastCubit.setSuccess(previousDuration+1);
+    }
+  }
+
   void updateResult(String selectedNumber){
-    final currentValue = resultCubit.state.maybeWhen(
-      success: (data) => data as String? ?? "",
-      orElse: () => "",
-    );
+    final String currentValue = resultCubit.data!;
     resultCubit.setSuccess("$currentValue$selectedNumber");
   }
 
-
   void initAnimationController(TickerProvider vsync) {
     animationController = AnimationController(
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: durationFastCubit.data!),
       vsync: vsync,
     )..addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -31,6 +46,12 @@ class MultiOperationLogic {
         animationController.forward();
       }
     });
+  }
+
+  void shuffleNumbers() {
+    final random = Random();
+    numbers.shuffle(random);
+    userSelectNumbers = numbers.take(7).map((e) => int.parse(e)).toList();
   }
 
 

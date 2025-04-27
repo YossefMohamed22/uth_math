@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:crypto/crypto.dart';
-import 'package:neuro_math/view/multi_operation_page/widgets/vertical_ticker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neuro_math/core/bloc/universal_bloc.dart';
+import 'package:neuro_math/core/bloc/universal_state.dart';
+import 'package:neuro_math/view/auth/views/login/login_logic.dart';
+import 'package:neuro_math/view/multiplied.dart';
 import 'dart:convert';
-import 'home/home_page.dart';
-import 'admin_page/admins_screen.dart';
-import 'exam_screen.dart';
+import '../../../home/home_page.dart';
+import '../../../admin_page/admins_screen.dart';
+import '../../../exam_screen.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -18,6 +22,7 @@ class Login extends StatelessWidget {
       routes: {
         '/': (context) => const LoginScreen(),
         '/admin': (context) => const AdminScreen(),
+        '/multi': (context) => const Multiplied(),
         '/exam': (context) => const ExamPage(
               questions: [
                 {"question": "5 + 3", "answer": "8"},
@@ -90,11 +95,12 @@ class _LoginScreenState extends State<LoginScreen> {
         // مثال: الطالب لو عنده امتحان
         bool hasExam = true; // يمكنك تغيير القيمة لمحاكاة الحالة
         if (hasExam) {
-          Navigator.pushReplacementNamed(context, '/exam');
-          // Navigator.push(context,MaterialPageRoute(builder: (context) => VerticalTicker(texts: ["1","2","4","5","6","-4","-8","-9","10"]),) );
-        } else {
-          // ignore: use_build_context_synchronously
-          Navigator.pushReplacementNamed(context, '/main');
+          Navigator.pushReplacementNamed(context, '/multi');
+          // Navigator.pushReplacement(
+          //     context,
+          //     MaterialPageRoute(builder: (context) {
+          //   return Multiplied();
+          // },));
         }
       } else {
         showErrorMessage("اسم المستخدم أو كلمة المرور غير صحيحة.");
@@ -104,7 +110,10 @@ class _LoginScreenState extends State<LoginScreen> {
         isLoading = false;
       });
     }
+
   }
+
+  LoginLogic logic = LoginLogic();
 
   @override
   void dispose() {

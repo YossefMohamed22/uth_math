@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:neuro_math/view/multi_operation_page/multi_operation_logic.dart';
 import 'package:neuro_math/view/multi_operation_page/widgets/keyboard_input_widget.dart';
+import 'package:neuro_math/view/multi_operation_page/widgets/vertical_text.dart';
 import 'package:neuro_math/view/multi_operation_page/widgets/vertical_ticker.dart';
 
 class MultiOperationsPage extends StatefulWidget {

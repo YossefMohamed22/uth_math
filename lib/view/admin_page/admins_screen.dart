@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neuro_math/view/admin_page/widgets/students_number_widget.dart';
-import '../login.dart';
+import 'package:neuro_math/view/auth/views/login/login.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});

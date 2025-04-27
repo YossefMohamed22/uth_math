@@ -169,15 +169,32 @@ class _Page1State extends State<Divided> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.all(screenWidth * 0.12),
+                  padding: EdgeInsets.only(top: kToolbarHeight+50),
                   alignment: Alignment.center,
-                  child: Text(
-                    "$num1 $operation $num2 = $answer",
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.1,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                  child: Column(
+                    spacing: 5,
+                    children: [
+                      Text(
+                        "$num1 $operation $num2",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.1,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: Divider( thickness: 2,color: Colors.black,),
+                      ),
+                      Text(
+                        answer,
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.1,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(
